@@ -16,18 +16,26 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Divider(text: String){
+fun Divider(text: String) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Divider(
             Modifier
                 .background(Color(0xFFF9F9F9))
                 .height(1.dp)
-                .weight(1f))
-        Text(text = text, fontSize = 12.sp ,fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 6.dp), color = Color(0xFFB5B5B5))
+                .weight(1f)
+        )
+        Text(
+            text = text,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 6.dp),
+            color = Color(0xFFB5B5B5)
+        )
         Divider(
             Modifier
                 .background(Color(0xFFF9F9F9))
                 .height(1.dp)
-                .weight(1f))
+                .weight(1f)
+        )
     }
 }

@@ -8,15 +8,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Header(modifier: Modifier){
-    val activity = LocalContext.current as Activity
+fun Header(modifier: Modifier, onExitApp: () -> Unit) {
     IconButton(
         modifier = modifier.size(30.dp),
-        onClick = { activity.finish() }
+        onClick = { onExitApp() }
     ) {
         Icon(Icons.Default.Close, contentDescription = "Close App", Modifier.size(30.dp))
     }
