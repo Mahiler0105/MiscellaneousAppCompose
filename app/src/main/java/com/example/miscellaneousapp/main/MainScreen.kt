@@ -1,6 +1,7 @@
 package com.example.miscellaneousapp.main
 
 import android.app.Activity
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -29,7 +30,7 @@ fun MainScreen(
     mainViewModel: MainViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
-    val isDarkTheme: Boolean by mainViewModel.isDarkTheme.observeAsState(initial = false)
+    val isDarkTheme: Boolean by mainViewModel.isDarkTheme.observeAsState(initial = isSystemInDarkTheme())
 
     NavigationEffects(
         navigationChannel = mainViewModel.navigationChannel,
