@@ -7,15 +7,15 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.miscellaneousapp.features.apps.ui.AppsScreen
+import com.example.miscellaneousapp.features.apps.ui.AppListScreen
 import com.example.miscellaneousapp.features.instagram.ui.InstagramLoginScreen
+import com.example.miscellaneousapp.features.splash.ui.SplashScreen
 import com.example.miscellaneousapp.features.todo.ui.TasksScreen
 import com.example.miscellaneousapp.navigation.Destination
 import com.example.miscellaneousapp.navigation.NavHost
@@ -24,6 +24,7 @@ import com.example.miscellaneousapp.navigation.composable
 import com.example.miscellaneousapp.theme.MiscellaneousAppTheme
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
+import androidx.compose.runtime.*
 
 @Composable
 fun MainScreen(
@@ -41,10 +42,15 @@ fun MainScreen(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            NavHost(navController = navController, startDestination = Destination.AppsScreen){
-                composable(Destination.AppsScreen){ AppsScreen(isDarkTheme, { mainViewModel.onSwitchColorTheme() }) }
-                composable(Destination.TodoScreen){ TasksScreen() }
+            NavHost(navController = navController, startDestination = Destination.SplashScreen) {
+                composable(Destination.MainScreen) {
+                    AppListScreen(
+                        isDarkTheme,
+                        { mainViewModel.onSwitchColorTheme(isDarkTheme) })
+                }
+                composable(Destination.TodoScreen) { TasksScreen() }
                 composable(Destination.InstagramScreen) { InstagramLoginScreen() }
+                composable(Destination.SplashScreen) { SplashScreen() }
             }
         }
     }
@@ -76,6 +82,9 @@ fun NavigationEffects(
                             popUpTo(popUpToRoute) { inclusive = intent.inclusive }
                         }
                     }
+                }
+                is NavigationIntent.PopStack -> {
+                    navHostController.popBackStack()
                 }
             }
         }

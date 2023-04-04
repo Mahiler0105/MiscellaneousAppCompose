@@ -59,4 +59,10 @@ class AppNavigatorImpl @Inject constructor() : AppNavigator {
             )
         )
     }
+
+    override fun popStack() {
+        navigationChannel.trySend(
+            NavigationIntent.PopStack
+        )
+    }
 }

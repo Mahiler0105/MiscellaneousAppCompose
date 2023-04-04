@@ -28,6 +28,8 @@ interface AppNavigator {
         inclusive: Boolean = false,
         isSingleTop: Boolean = false,
     )
+
+    fun popStack()
 }
 
 sealed class NavigationIntent {
@@ -35,6 +37,9 @@ sealed class NavigationIntent {
         val route: String? = null,
         val inclusive: Boolean = false,
     ) : NavigationIntent()
+
+
+    object PopStack : NavigationIntent()
 
     data class NavigateTo(
         val route: String,

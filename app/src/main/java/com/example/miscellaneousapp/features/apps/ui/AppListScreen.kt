@@ -12,10 +12,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun AppsScreen(
+fun AppListScreen(
     isDarkTheme: Boolean,
     onChangeTheme: () -> Unit,
-    appsViewModel: AppsViewModel = hiltViewModel(),
+    appListViewModel: AppListViewModel = hiltViewModel(),
 ) {
     Column(
         modifier = Modifier
@@ -45,10 +45,10 @@ fun AppsScreen(
             }
         }
         Spacer(modifier = Modifier.size(20.dp))
-        Button(onClick = { appsViewModel.onNavigateToInstagram() }, Modifier.fillMaxWidth()) {
+        Button(onClick = { appListViewModel.onNavigateToInstagram() }, Modifier.fillMaxWidth()) {
             Text(text = "IR A INSTAGRAM")
         }
-        Button(onClick = { appsViewModel.onNavigateToTodoApp() }, Modifier.fillMaxWidth()) {
+        Button(onClick = { appListViewModel.onNavigateToTodoApp() }, Modifier.fillMaxWidth()) {
             Text(text = "IR A TODO APP")
         }
     }

@@ -7,12 +7,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AppsViewModel @Inject constructor(private val appNavigation: AppNavigator) : ViewModel() {
-    fun onNavigateToInstagram(){
+class AppListViewModel @Inject constructor(private val appNavigation: AppNavigator) : ViewModel() {
+    fun onNavigateToInstagram() {
         appNavigation.tryNavigateTo(Destination.InstagramScreen())
     }
 
-    fun onNavigateToTodoApp(){
+    fun onNavigateToTodoApp() {
         appNavigation.tryNavigateTo(Destination.TodoScreen())
     }
 }

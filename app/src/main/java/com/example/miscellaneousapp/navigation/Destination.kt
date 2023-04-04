@@ -13,7 +13,8 @@ sealed class Destination(protected val route: String, vararg params: String) {
 
     object InstagramScreen : NoArgumentsDestination("instagram")
     object TodoScreen : NoArgumentsDestination("todo")
-    object AppsScreen: NoArgumentsDestination("app-list")
+    object MainScreen : NoArgumentsDestination("main")
+    object SplashScreen : NoArgumentsDestination("splash")
 
     // EXAMPLE WITH PARAMS
     // object UserDetailsScreen : Destination("user_details", "firstName", "lastName") {

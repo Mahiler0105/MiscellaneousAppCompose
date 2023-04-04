@@ -16,12 +16,7 @@ class MainViewModel @Inject constructor(
     private val _isDarkTheme = MutableLiveData<Boolean>()
     val isDarkTheme: LiveData<Boolean> = _isDarkTheme
 
-    fun onSwitchColorTheme(){
-        if(_isDarkTheme.value == null){
-            _isDarkTheme.value = true
-            return
-        }
-
-        _isDarkTheme.value = !_isDarkTheme.value!!
+    fun onSwitchColorTheme(isDarkTheme: Boolean) {
+        _isDarkTheme.value = !isDarkTheme
     }
 }
