@@ -9,6 +9,10 @@ android {
     namespace 'com.example.miscellaneousapp'
     compileSdk 33
 
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
     defaultConfig {
         applicationId "com.example.miscellaneousapp"
         minSdk 24
@@ -24,7 +28,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
